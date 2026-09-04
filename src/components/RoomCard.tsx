@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import type { GroupRoom } from "../types/GroupRoom";
 
 interface RoomCardProps {
@@ -10,6 +11,9 @@ export default function RoomCard({ room }: RoomCardProps) {
     <div>
       <h2>{room.name}</h2>
       <p>Kapacitet: {room.capacity} personer</p>
+
+      {/* Länkar till detaljsidan för det valda rummet */}
+      <Link to={`/rooms/${room.id}`}>Visa rum</Link>
     </div>
   );
 }
