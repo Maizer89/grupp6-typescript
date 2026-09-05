@@ -6,3 +6,8 @@ export function getRooms(): Promise<GroupRoom[]> {
   // Returnerar en array med GroupRoom-objekt
   return get<GroupRoom[]>("/rooms");
 }
+
+// Hämtar ett specifikt rum med hjälp av dess id
+export function getRoomById(id: string): Promise<GroupRoom> {
+  return get<GroupRoom>(`/rooms/${id}`);
+}
