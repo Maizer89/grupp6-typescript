@@ -7,18 +7,27 @@ export default function RoomDetails() {
   // Hämtar id från URL:en, t.ex. /rooms/2
   const { id } = useParams();
 
-   // Sparar rummet som hämtas från JSON Server
+  // Sparar rummet som hämtas från JSON Server
   const [room, setRoom] = useState<GroupRoom | null>(null);
 
-useEffect(() => {
+  // Sparar ett eventuellt felmeddelande
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
     // Avbryt om id saknas i URL:en
-    if (!id) return;
+    if (!id)
+      return;
 
     // Hämtar rätt rum med hjälp av id
     getRoomById(id)
       .then((data) => setRoom(data))
-      .catch((error) => console.error(error));
+      .catch(() => setError("Rummet kunde inte hämtas."));
   }, [id]);
+
+  // Visas om hämtningen misslyckas
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   // Visas medan rummet hämtas
   if (!room) {
