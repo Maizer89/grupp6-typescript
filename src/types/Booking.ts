@@ -13,6 +13,7 @@ export interface Booking {
   date: string;
   timeSlot: TimeSlot;
   bookedBy: string;
+  status: BookingStatus;
 }
 
 export type NewBooking = Omit<Booking, "id">;
