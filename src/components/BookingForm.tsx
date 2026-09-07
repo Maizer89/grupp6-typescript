@@ -11,6 +11,7 @@ export default function BookingForm({ roomId }: BookingFormProps) {
   const [timeSlot, setTimeSlot] = useState<TimeSlot | "">("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error" | "">("");
 
   async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault(); //stoppar formuläret från att ladda om hela sidan när man klickar på Boka knappen
@@ -31,6 +32,7 @@ export default function BookingForm({ roomId }: BookingFormProps) {
 
     if (isAlreadyBooked) {
       setMessage("Tiden du har valt är redan bokad");
+      setMessageType("error");
       return;
     }
 
@@ -41,7 +43,8 @@ export default function BookingForm({ roomId }: BookingFormProps) {
       bookedBy: email,
       status: "confirmed",
     });
-    setMessage("Bokningen är färdig!");
+    setMessage("Bokningen är registrerad!");
+    setMessageType("success");
   }
 
   return (
@@ -81,7 +84,7 @@ export default function BookingForm({ roomId }: BookingFormProps) {
       />
 
       <button type="submit">Boka</button>
-      {message && <p>{message}</p>}
+      {message && <p className={`booking-message ${messageType}`}>{message}</p>}
     </form>
   );
 }
