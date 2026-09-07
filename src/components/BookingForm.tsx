@@ -56,6 +56,9 @@ export default function BookingForm({ roomId }: BookingFormProps) {
     });
     setMessage("Bokningen är registrerad!");
     setMessageType("success");
+    setDate("");
+    setTimeSlot("");
+    setEmail("");
   }
 
   function isTimeSlotBooked(slot: TimeSlot) {
