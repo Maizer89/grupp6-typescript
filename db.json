@@ -25,5 +25,23 @@
       "image": "https://placehold.co/800x500"
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "id": "1",
+      "roomId": 1,
+      "date": "2026-09-10",
+      "timeSlot": "09:00-10:00",
+      "bookedBy": "student@kth.se",
+      "status": "cancelled"
+    },
+    {
+      "id": "2",
+      "roomId": 2,
+      "date": "2026-09-12",
+      "timeSlot": "13:00-14:00",
+      "bookedBy": "student@kth.se",
+      "status": "confirmed"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
