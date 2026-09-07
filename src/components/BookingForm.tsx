@@ -4,6 +4,7 @@ import type { TimeSlot } from "../types/Booking";
 export default function BookingForm() {
   const [date, setDate] = useState("");
   const [timeSlot, setTimeSlot] = useState<TimeSlot | "">("");
+  const [email, setEmail] = useState("");
 
   return (
     <form>
@@ -30,6 +31,16 @@ export default function BookingForm() {
         <option value="12:00-13:00">12:00-13:00</option>
         <option value="13:00-14:00">13:00-14:00</option>
       </select>
+
+      <label htmlFor="email">E-post</label>
+
+      <input
+        id="email"
+        type="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        placeholder="namn@email.se"
+      />
     </form>
   );
 }
