@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { TimeSlot } from "../types/Booking";
-import { createBooking } from "../services/bookingservice";
+import { createBooking, getBookings } from "../services/bookingservice";
 
 interface BookingFormProps {
   roomId: number;
@@ -10,11 +10,27 @@ export default function BookingForm({ roomId }: BookingFormProps) {
   const [date, setDate] = useState("");
   const [timeSlot, setTimeSlot] = useState<TimeSlot | "">("");
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault(); //stoppar formuläret från att ladda om hela sidan när man klickar på Boka knappen
 
     if (!date || !timeSlot || !email) {
+      return;
+    }
+
+    const bookings = await getBookings();
+
+    const isAlreadyBooked = bookings.some(
+      (booking) =>
+        booking.roomId === roomId &&
+        booking.date === date &&
+        booking.timeSlot === timeSlot &&
+        booking.status === "confirmed",
+    );
+
+    if (isAlreadyBooked) {
+      setMessage("Tiden du har valt är redan bokad");
       return;
     }
 
@@ -25,6 +41,7 @@ export default function BookingForm({ roomId }: BookingFormProps) {
       bookedBy: email,
       status: "confirmed",
     });
+    setMessage("Bokningen är färdig!");
   }
 
   return (
@@ -64,6 +81,7 @@ export default function BookingForm({ roomId }: BookingFormProps) {
       />
 
       <button type="submit">Boka</button>
+      {message && <p>{message}</p>}
     </form>
   );
 }
