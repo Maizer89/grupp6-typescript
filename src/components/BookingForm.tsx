@@ -1,13 +1,34 @@
 import { useState } from "react";
 import type { TimeSlot } from "../types/Booking";
+import { createBooking } from "../services/bookingservice";
 
-export default function BookingForm() {
+interface BookingFormProps {
+  roomId: number;
+}
+
+export default function BookingForm({ roomId }: BookingFormProps) {
   const [date, setDate] = useState("");
   const [timeSlot, setTimeSlot] = useState<TimeSlot | "">("");
   const [email, setEmail] = useState("");
 
+  async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+    event.preventDefault(); //stoppar formuläret från att ladda om hela sidan när man klickar på Boka knappen
+
+    if (!date || !timeSlot || !email) {
+      return;
+    }
+
+    await createBooking({
+      roomId: roomId,
+      date,
+      timeSlot,
+      bookedBy: email,
+      status: "confirmed",
+    });
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="date">Datum</label>
 
       <input
@@ -41,6 +62,8 @@ export default function BookingForm() {
         onChange={(event) => setEmail(event.target.value)}
         placeholder="namn@email.se"
       />
+
+      <button type="submit">Boka</button>
     </form>
   );
 }
