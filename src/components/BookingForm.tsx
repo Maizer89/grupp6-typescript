@@ -1,7 +1,9 @@
 import { useState } from "react";
+import type { TimeSlot } from "../types/Booking";
 
 export default function BookingForm() {
   const [date, setDate] = useState("");
+  const [timeSlot, setTimeSlot] = useState<TimeSlot | "">("");
 
   return (
     <form>
@@ -13,6 +15,21 @@ export default function BookingForm() {
         value={date}
         onChange={(event) => setDate(event.target.value)}
       />
+
+      <label htmlFor="timeSlot">Tidsblock</label>
+
+      <select
+        id="timeSlot"
+        value={timeSlot}
+        onChange={(event) => setTimeSlot(event.target.value as TimeSlot)}
+      >
+        <option value="">Välj tid</option>
+        <option value="09:00-10:00">09:00-10:00</option>
+        <option value="10:00-11:00">10:00-11:00</option>
+        <option value="11:00-12:00">11:00-12:00</option>
+        <option value="12:00-13:00">12:00-13:00</option>
+        <option value="13:00-14:00">13:00-14:00</option>
+      </select>
     </form>
   );
 }
