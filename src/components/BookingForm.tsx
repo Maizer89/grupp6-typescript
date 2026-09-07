@@ -1,5 +1,5 @@
-import { useState } from "react";
-import type { TimeSlot } from "../types/Booking";
+import { useState, useEffect } from "react";
+import type { Booking, TimeSlot } from "../types/Booking";
 import { createBooking, getBookings } from "../services/bookingservice";
 
 interface BookingFormProps {
@@ -12,6 +12,17 @@ export default function BookingForm({ roomId }: BookingFormProps) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState<"success" | "error" | "">("");
+  const [bookings, setBookings] = useState<Booking[]>([]);
+
+  useEffect(() => {
+    if (!date) {
+      return;
+    }
+
+    getBookings()
+      .then((data) => setBookings(data))
+      .catch((error) => console.error(error));
+  }, [date]);
 
   async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault(); //stoppar formuläret från att ladda om hela sidan när man klickar på Boka knappen
@@ -47,6 +58,16 @@ export default function BookingForm({ roomId }: BookingFormProps) {
     setMessageType("success");
   }
 
+  function isTimeSlotBooked(slot: TimeSlot) {
+    return bookings.some(
+      (booking) =>
+        booking.roomId === roomId &&
+        booking.date === date &&
+        booking.timeSlot === slot &&
+        booking.status === "confirmed",
+    );
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="date">Datum</label>
@@ -66,11 +87,21 @@ export default function BookingForm({ roomId }: BookingFormProps) {
         onChange={(event) => setTimeSlot(event.target.value as TimeSlot)}
       >
         <option value="">Välj tid</option>
-        <option value="09:00-10:00">09:00-10:00</option>
-        <option value="10:00-11:00">10:00-11:00</option>
-        <option value="11:00-12:00">11:00-12:00</option>
-        <option value="12:00-13:00">12:00-13:00</option>
-        <option value="13:00-14:00">13:00-14:00</option>
+        <option value="09:00-10:00" disabled={isTimeSlotBooked("09:00-10:00")}>
+          09:00-10:00 {isTimeSlotBooked("09:00-10:00") ? "Bokad" : ""}
+        </option>
+        <option value="10:00-11:00" disabled={isTimeSlotBooked("10:00-11:00")}>
+          10:00-11:00 {isTimeSlotBooked("10:00-11:00") ? "Bokad" : ""}
+        </option>
+        <option value="11:00-12:00" disabled={isTimeSlotBooked("11:00-12:00")}>
+          11:00-12:00 {isTimeSlotBooked("11:00-12:00") ? "Bokad" : ""}
+        </option>
+        <option value="12:00-13:00" disabled={isTimeSlotBooked("12:00-13:00")}>
+          12:00-13:00 {isTimeSlotBooked("12:00-13:00") ? "Bokad" : ""}
+        </option>
+        <option value="13:00-14:00" disabled={isTimeSlotBooked("13:00-14:00")}>
+          13:00-14:00 {isTimeSlotBooked("13:00-14:00") ? "Bokad" : ""}
+        </option>
       </select>
 
       <label htmlFor="email">E-post</label>
