@@ -3,17 +3,26 @@
     {
       "id": "1",
       "name": "Konferensrum A",
-      "capacity": 8
+      "capacity": 8,
+      "description": "Ett ljust konferensrum perfekt för möten",
+      "equipment": ["Projektor", "Whiteboard"],
+      "image": "https://placehold.co/800x500"
     },
     {
       "id": "2",
       "name": "Konferensrum B",
-      "capacity": 12
+      "capacity": 12,
+      "description": "Ett stort mötesrum för stora grupper",
+      "equipment": ["Projektor", "Whiteboard"],
+      "image": "https://placehold.co/800x500"
     },
     {
       "id": "3",
       "name": "Mötesrum C",
-      "capacity": 4
+      "capacity": 4,
+      "description": "Ett mindre mötesrum för mindre grupper",
+      "equipment": ["Whiteboard"],
+      "image": "https://placehold.co/800x500"
     }
   ],
   "bookings": [
