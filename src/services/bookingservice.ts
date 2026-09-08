@@ -1,4 +1,4 @@
-import { get, patch, post } from "./api";
+import { get, patch, post, remove } from "./api";
 import type { Booking, NewBooking } from "../types/Booking";
 
 /**
@@ -51,4 +51,8 @@ export function cancelBooking(bookingId: string): Promise<Booking> {
   return patch<Booking, { status: "cancelled" }>(`/bookings/${bookingId}`, {
     status: "cancelled",
   });
+}
+
+export function deleteBooking(bookingId: string): Promise<void> {
+  return remove(`/bookings/${bookingId}`);
 }

@@ -13,9 +13,7 @@ export default function RoomDetails() {
       return;
     }
 
-    const roomId = Number(id);
-
-    getRoom(roomId)
+    getRoom(id)
       .then((data) => setRoom(data))
       .catch((error) => console.error(error));
   }, [id]);
@@ -30,17 +28,10 @@ export default function RoomDetails() {
 
   return (
     <>
-      <header>
-        <h2>Room Booking</h2>
-
-        <nav>
-          <Link to="/">Rum</Link>
-          <Link to="/my-bookings">Mina bokningar</Link>
-        </nav>
-      </header>
-
       <main>
-        <Link to="/">← Tillbaka till rum</Link>
+        <Link to="/" className="back-link">
+          ← Tillbaka till rum
+        </Link>
 
         <section>
           <div>

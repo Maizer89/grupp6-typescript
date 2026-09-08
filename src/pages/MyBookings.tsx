@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import type { Booking } from "../types/Booking";
 import type { GroupRoom } from "../types/GroupRoom";
-import { getBookingsByEmail, cancelBooking } from "../services/bookingservice";
+import {
+  getBookingsByEmail,
+  cancelBooking,
+  deleteBooking,
+} from "../services/bookingservice";
 import { getRooms } from "../services/roomService";
 import BookingCard from "../components/BookingCard";
 
@@ -107,19 +111,34 @@ export default function MyBookings() {
       });
   }
 
+  function handleDelete(bookingId: string) {
+    const confirmDelete = window.confirm(
+      "Är du säger på att du vill ta bort bokningen permanent?",
+    );
+
+    if (!confirmDelete) {
+      return;
+    }
+
+    deleteBooking(bookingId)
+      .then(() => {
+        setBookings((prev) =>
+          prev.filter((booking) => booking.id !== bookingId),
+        );
+
+        setMessage(`Bokning #${bookingId} har tagits bort.`);
+      })
+      .catch(() => {
+        setMessage("Kunde inte ta bort bokningen. Försök igen senare.");
+      });
+  }
+
   return (
     <>
-      {/* Gemensam header enligt projektets design */}
-      <header>
-        <h2>Room Booking</h2>
-        <nav>
-          <Link to="/">Rum</Link>
-          <Link to="/my-bookings">Mina bokningar</Link>
-        </nav>
-      </header>
-
       <main>
-        <Link to="/">← Tillbaka till rum</Link>
+        <Link to="/" className="back-link">
+          ← Tillbaka till rum
+        </Link>
 
         <h1>Mina Bokningar</h1>
         <p>
@@ -155,6 +174,7 @@ export default function MyBookings() {
                   booking={booking}
                   roomName={getRoomName(booking.roomId)}
                   onCancel={handleCancel}
+                  onDelete={handleDelete}
                 />
               ))}
             </div>

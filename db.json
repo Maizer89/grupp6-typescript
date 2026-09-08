@@ -51,20 +51,12 @@
       "status": "confirmed"
     },
     {
-      "roomId": "1",
-      "date": "2026-09-09",
-      "timeSlot": "10:00-11:00",
+      "roomId": "2",
+      "date": "2026-09-11",
+      "timeSlot": "11:00-12:00",
       "bookedBy": "rasmus@live.se",
-      "status": "cancelled",
-      "id": "BNFROOX7zDI"
-    },
-    {
-      "roomId": "1",
-      "date": "2026-09-09",
-      "timeSlot": "10:00-11:00",
-      "bookedBy": "rasmus@live.se",
-      "status": "cancelled",
-      "id": "Fze2B9UxtaE"
+      "status": "confirmed",
+      "id": "H_Vh4oZWIo8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

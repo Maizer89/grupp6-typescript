@@ -8,6 +8,6 @@ export function getRooms(): Promise<GroupRoom[]> {
 }
 
 //Hämtar 1 rum
-export function getRoom(id: number): Promise<GroupRoom> {
+export function getRoom(id: string): Promise<GroupRoom> {
   return get<GroupRoom>(`/rooms/${id}`);
 }

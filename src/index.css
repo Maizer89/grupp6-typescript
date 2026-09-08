@@ -14,37 +14,52 @@ a {
   text-decoration: none;
 }
 
-header {
-  background: #0f1f2e;
+.navbar {
+  background-color: #0f1f2e;
   color: white;
-  padding: 1rem 2rem;
+}
+
+.navbar-container {
+  min-height: 64px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-header h2 {
-  margin: 0;
+.navbar-brand {
+  font-size: 1.15rem;
+  font-weight: 700;
+  & span {
+    font-weight: 400;
+  }
 }
 
-nav {
+.navbar-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 24px;
 }
 
-nav a:hover {
-  text-decoration: underline;
-}
-
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-main > a {
-  display: inline-block;
-  margin-bottom: 1.5rem;
+.navbar-link {
+  position: relative;
+  color: #dbe4ea;
+  font-weight: 500;
+  padding: 22px 8px;
+  &:hover {
+    color: white;
+  }
+  &.active {
+    color: white;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: #256d3a;
+      border-radius: 3px 3px 0 0;
+    }
+  }
 }
 
 section {
@@ -54,69 +69,60 @@ section {
   background: white;
   padding: 2rem;
   border-radius: 12px;
-}
-
-section > div {
-  min-width: 0;
-}
-
-section img {
-  width: 100%;
-  max-height: 350px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-section h1 {
-  margin-bottom: 0.5rem;
-}
-
-section h2 {
-  margin-top: 1.5rem;
-}
-
-section span {
-  display: inline-block;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding: 0.4rem 0.7rem;
-  background: #eef2f3;
-  border-radius: 6px;
-  font-size: 0.75rem;
+  & img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  & h1 {
+    margin-bottom: 0.5rem;
+  }
+  & h2 {
+    margin-top: 1.5rem;
+  }
+  & span {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    background: #eef2f3;
+    border-radius: 6px;
+    font-size: 0.75rem;
+  }
+  & > div {
+    min-width: 0;
+  }
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-}
-
-form label {
-  font-weight: 600;
-}
-
-form input,
-form select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #cbd5dc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-form button {
-  margin-top: 0.5rem;
-  padding: 0.8rem;
-  border: none;
-  border-radius: 6px;
-  background: #2f855a;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-form button:hover {
-  background: #276749;
+  & label {
+    font-weight: 600;
+  }
+  & input,
+  & select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5dc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  & button {
+    margin-top: 0.5rem;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    background: #2f855a;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      background: #276749;
+    }
+  }
 }
 
 .booking-message {
@@ -124,31 +130,135 @@ form button:hover {
   padding: 0.75rem;
   border-radius: 6px;
   font-weight: 600;
+  &.success {
+    background-color: #e6f4ea;
+    color: #207544;
+  }
+  &.error {
+    background-color: #fdecec;
+    color: #b42318;
+  }
 }
 
-.booking-message.success {
-  background-color: #e6f4ea;
-  color: #207544;
+.home-page {
+  width: 100%;
 }
 
-.booking-message.error {
-  background-color: #fdecec;
-  color: #b42318;
+.home-header {
+  margin-bottom: 32px;
+  & h1 {
+    margin-bottom: 8px;
+  }
+  & p {
+    margin: 0;
+    color: #64748b;
+  }
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.room-card {
+  background: #ffffff;
+  border: 1px solid #cbd5dc;
+  border-radius: 8px;
+  padding: 0px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  & .room-card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  & h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #0f1f2e;
+  }
+  & p {
+    margin-bottom: 20px;
+    color: #64748b;
+  }
+  & .room-card-link {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #256d3a;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+    &:hover {
+      background-color: #1e5a30;
+    }
+  }
+  & .room-card-info {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+}
+
+.room-card-content {
+  padding: 20px;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  padding: 24px;
+  flex: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #3f718f;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 24px;
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  main {
-    padding: 1rem;
-  }
-
   section {
     grid-template-columns: 1fr;
     padding: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .room-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .room-grid {
+    grid-template-columns: 1fr;
   }
 }
