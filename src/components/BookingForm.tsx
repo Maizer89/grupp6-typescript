@@ -3,7 +3,7 @@ import type { Booking, TimeSlot } from "../types/Booking";
 import { createBooking, getBookings } from "../services/bookingservice";
 
 interface BookingFormProps {
-  roomId: number;
+  roomId: string;
 }
 
 export default function BookingForm({ roomId }: BookingFormProps) {

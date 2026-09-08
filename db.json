@@ -5,7 +5,10 @@
       "name": "Konferensrum A",
       "capacity": 8,
       "description": "Ett ljust konferensrum perfekt för möten",
-      "equipment": ["Projektor", "Whiteboard"],
+      "equipment": [
+        "Projektor",
+        "Whiteboard"
+      ],
       "image": "https://placehold.co/800x500"
     },
     {
@@ -13,7 +16,10 @@
       "name": "Konferensrum B",
       "capacity": 12,
       "description": "Ett stort mötesrum för stora grupper",
-      "equipment": ["Projektor", "Whiteboard"],
+      "equipment": [
+        "Projektor",
+        "Whiteboard"
+      ],
       "image": "https://placehold.co/800x500"
     },
     {
@@ -21,7 +27,9 @@
       "name": "Mötesrum C",
       "capacity": 4,
       "description": "Ett mindre mötesrum för mindre grupper",
-      "equipment": ["Whiteboard"],
+      "equipment": [
+        "Whiteboard"
+      ],
       "image": "https://placehold.co/800x500"
     }
   ],
@@ -41,6 +49,22 @@
       "timeSlot": "13:00-14:00",
       "bookedBy": "student@kth.se",
       "status": "confirmed"
+    },
+    {
+      "roomId": "1",
+      "date": "2026-09-09",
+      "timeSlot": "10:00-11:00",
+      "bookedBy": "rasmus@live.se",
+      "status": "cancelled",
+      "id": "BNFROOX7zDI"
+    },
+    {
+      "roomId": "1",
+      "date": "2026-09-09",
+      "timeSlot": "10:00-11:00",
+      "bookedBy": "rasmus@live.se",
+      "status": "cancelled",
+      "id": "Fze2B9UxtaE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
