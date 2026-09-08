@@ -47,12 +47,12 @@ export async function getBookingsByEmail(email: string): Promise<Booking[]> {
  *   vilket tillåter systemet att veta vem som bokat tiden samtidigt som rummet
  *   blir ledigt igen för andra användare.
  */
-export function cancelBooking(bookingId: number): Promise<Booking> {
+export function cancelBooking(bookingId: string): Promise<Booking> {
   return patch<Booking, { status: "cancelled" }>(`/bookings/${bookingId}`, {
     status: "cancelled",
   });
 }
 
-export function deleteBooking(bookingId: number): Promise<void> {
+export function deleteBooking(bookingId: string): Promise<void> {
   return remove(`/bookings/${bookingId}`);
 }

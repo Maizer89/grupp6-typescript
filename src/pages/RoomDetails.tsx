@@ -8,13 +8,15 @@ export default function RoomDetails() {
   const { id } = useParams();
   const [room, setRoom] = useState<GroupRoom | null>(null);
 
-  const roomId = Number(id);
-
   useEffect(() => {
-    getRoom(roomId)
+    if (id === undefined) {
+      return;
+    }
+
+    getRoom(id)
       .then((data) => setRoom(data))
       .catch((error) => console.error(error));
-  }, [id, roomId]);
+  }, [id]);
 
   if (!id) {
     return <p>Rummet hittades inte! Var god försök igen</p>;

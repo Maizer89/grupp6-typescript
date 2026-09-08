@@ -8,8 +8,8 @@ import type { Booking } from "../types/Booking";
 export interface BookingCardProps {
   booking: Booking;
   roomName: string;
-  onCancel: (bookingId: number) => void; // 👈 Typad Callback-prop enligt lärarens krav
-  onDelete: (bookingId: number) => void;
+  onCancel: (bookingId: string) => void; // 👈 Typad Callback-prop enligt lärarens krav
+  onDelete: (bookingId: string) => void;
 }
 
 /**

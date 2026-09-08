@@ -52,8 +52,8 @@ export default function MyBookings() {
   }, []);
 
   // Hjälpfunktion: Hämtar rumsnamn baserat på ett rums numeriska id
-  function getRoomName(roomId: number): string {
-    const room = rooms.find((r) => Number(r.id) === Number(roomId));
+  function getRoomName(roomId: string): string {
+    const room = rooms.find((r) => r.id === roomId);
     return room ? room.name : `Rum #${roomId}`;
   }
 
@@ -90,7 +90,7 @@ export default function MyBookings() {
   // 4. Card 6: Avboka ett rum
   // Frågar först användaren med confirm dialog för att förhindra misstag.
   // Ändrar därefter statusen på servern och uppdaterar det lokala tillståndet direkt.
-  function handleCancel(bookingId: number) {
+  function handleCancel(bookingId: string) {
     const confirmCancel = window.confirm(
       "Är du säker på att du vill avboka detta rum?",
     );
@@ -111,7 +111,7 @@ export default function MyBookings() {
       });
   }
 
-  function handleDelete(bookingId: number) {
+  function handleDelete(bookingId: string) {
     const confirmDelete = window.confirm(
       "Är du säger på att du vill ta bort bokningen permanent?",
     );

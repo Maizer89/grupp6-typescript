@@ -8,8 +8,8 @@ export type TimeSlot =
 export type BookingStatus = "confirmed" | "cancelled";
 
 export interface Booking {
-  id: number;
-  roomId: number;
+  id: string;
+  roomId: string;
   date: string;
   timeSlot: TimeSlot;
   bookedBy: string;
