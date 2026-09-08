@@ -15,12 +15,16 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
-      <h1>Tillgängliga rum</h1>
-
-      {rooms.map((room) => (
-  <RoomCard key={room.id} room={room} />
-  ))}
+    <main className="home-page">
+      <div className="home-header">
+        <h1>Tillgängliga rum</h1>
+        <p>Välj ett rum för att se information och boka en ledig tid.</p>
+      </div>
+      <div className="room-grid">
+        {rooms.map((room) => (
+          <RoomCard key={room.id} room={room} />
+        ))}
+      </div>
     </main>
   );
 }
