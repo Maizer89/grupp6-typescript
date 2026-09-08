@@ -234,6 +234,16 @@ form {
   padding-inline: 24px;
 }
 
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #3f718f;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
 @media (max-width: 768px) {
   section {
     grid-template-columns: 1fr;

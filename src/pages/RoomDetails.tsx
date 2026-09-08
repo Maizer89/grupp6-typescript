@@ -29,7 +29,9 @@ export default function RoomDetails() {
   return (
     <>
       <main>
-        <Link to="/">← Tillbaka till rum</Link>
+        <Link to="/" className="back-link">
+          ← Tillbaka till rum
+        </Link>
 
         <section>
           <div>

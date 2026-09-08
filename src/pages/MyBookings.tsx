@@ -135,17 +135,10 @@ export default function MyBookings() {
 
   return (
     <>
-      {/* Gemensam header enligt projektets design */}
-      <header>
-        <h2>Room Booking</h2>
-        <nav>
-          <Link to="/">Rum</Link>
-          <Link to="/my-bookings">Mina bokningar</Link>
-        </nav>
-      </header>
-
       <main>
-        <Link to="/">← Tillbaka till rum</Link>
+        <Link to="/" className="back-link">
+          ← Tillbaka till rum
+        </Link>
 
         <h1>Mina Bokningar</h1>
         <p>
