@@ -1,5 +1,5 @@
 export interface GroupRoom {
-  id: number;
+  id: string;
   name: string;
   capacity: number;
   description: string;

@@ -8,7 +8,7 @@ import type { Booking } from "../types/Booking";
 export interface BookingCardProps {
   booking: Booking;
   roomName: string;
-  onCancel: (bookingId: number) => void; // 👈 Typad Callback-prop enligt lärarens krav
+  onCancel: (bookingId: string) => void; // 👈 Typad Callback-prop enligt lärarens krav
 }
 
 /**
@@ -35,7 +35,13 @@ export default function BookingCard({
         boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+        }}
+      >
         <div>
           <h3 style={{ margin: "0 0 6px 0", color: "#0f1f2e" }}>{roomName}</h3>
           <p style={{ margin: "4px 0", color: "#64748b", fontSize: "0.9rem" }}>

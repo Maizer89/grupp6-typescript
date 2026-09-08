@@ -9,7 +9,7 @@ import BookingCard from "../components/BookingCard";
 /**
  * Sida för att söka och hantera användarens bokningar.
  * Implementerar Card 5 (Sök bokningar) och Card 6 (Avboka rum).
- * 
+ *
  * Arkitektur & Logikflöde:
  * - Card 5: Användaren anger sin e-postadress. Vi validerar formatet och
  *   anropar getBookingsByEmail() som hämtar och filtrerar bokningarna.
@@ -48,8 +48,8 @@ export default function MyBookings() {
   }, []);
 
   // Hjälpfunktion: Hämtar rumsnamn baserat på ett rums numeriska id
-  function getRoomName(roomId: number): string {
-    const room = rooms.find((r) => Number(r.id) === Number(roomId));
+  function getRoomName(roomId: string): string {
+    const room = rooms.find((r) => r.id === roomId);
     return room ? room.name : `Rum #${roomId}`;
   }
 
@@ -86,15 +86,19 @@ export default function MyBookings() {
   // 4. Card 6: Avboka ett rum
   // Frågar först användaren med confirm dialog för att förhindra misstag.
   // Ändrar därefter statusen på servern och uppdaterar det lokala tillståndet direkt.
-  function handleCancel(bookingId: number) {
-    const confirmCancel = window.confirm("Är du säker på att du vill avboka detta rum?");
+  function handleCancel(bookingId: string) {
+    const confirmCancel = window.confirm(
+      "Är du säker på att du vill avboka detta rum?",
+    );
     if (!confirmCancel) return;
 
     cancelBooking(bookingId)
       .then(() => {
         // Uppdaterar den lokala arrayen direkt så användaren ser statusändringen
         setBookings((prev) =>
-          prev.map((b) => (b.id === bookingId ? { ...b, status: "cancelled" } : b))
+          prev.map((b) =>
+            b.id === bookingId ? { ...b, status: "cancelled" } : b,
+          ),
         );
         setMessage(`Bokning #${bookingId} har avbokats.`);
       })
@@ -118,7 +122,10 @@ export default function MyBookings() {
         <Link to="/">← Tillbaka till rum</Link>
 
         <h1>Mina Bokningar</h1>
-        <p>Sök efter dina bokningar med din e-postadress för att se eller avboka rum.</p>
+        <p>
+          Sök efter dina bokningar med din e-postadress för att se eller avboka
+          rum.
+        </p>
 
         {/* Card 5: Sökformulär */}
         <form onSubmit={handleSearch}>
