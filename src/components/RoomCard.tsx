@@ -9,11 +9,18 @@ interface RoomCardProps {
 export default function RoomCard({ room }: RoomCardProps) {
   return (
     <div className="room-card">
-      <h2>{room.name}</h2>
-      <p>Kapacitet: {room.capacity} personer</p>
+      <img className="room-card-image" src={room.image} alt={room.name} />
+      <div className="room-card-content">
+        <h2>{room.name}</h2>
+        <div className="room-card-info">
+          <span>👥 {room.capacity} personer</span>
+          {room.equipment.length > 0 && <span> ▣ {room.equipment[0]}</span>}
+        </div>
 
-      {/* Länkar till detaljsidan för det valda rummet */}
-      <Link to={`/rooms/${room.id}`}>Visa rum</Link>
+        <Link className="room-card-link" to={`/rooms/${room.id}`}>
+          Visa rum
+        </Link>
+      </div>
     </div>
   );
 }

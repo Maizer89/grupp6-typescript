@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router";
 export default function Navbar() {
   return (
     <header className="navbar">
-      <div className="navbar-container">
+      <div className="navbar-container container">
         <div className="navbar-brand-container">
           <Link to="/" className="navbar-brand">
             📚 Biblioteket <span>Grupprum</span>
