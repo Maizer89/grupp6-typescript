@@ -8,6 +8,7 @@ import {
   deleteBooking,
 } from "../services/bookingservice";
 import { getRooms } from "../services/roomService";
+import List from "../components/List";
 import BookingCard from "../components/BookingCard";
 
 /**
@@ -168,15 +169,18 @@ export default function MyBookings() {
           <section>
             <div>
               <h2>Bokningar för {searchedEmail}</h2>
-              {bookings.map((booking) => (
-                <BookingCard
-                  key={booking.id}
-                  booking={booking}
-                  roomName={getRoomName(booking.roomId)}
-                  onCancel={handleCancel}
-                  onDelete={handleDelete}
-                />
-              ))}
+              <List
+                items={bookings}
+                renderItem={(booking) => (
+                  <BookingCard
+                    key={booking.id}
+                    booking={booking}
+                    roomName={getRoomName(booking.roomId)}
+                    onCancel={handleCancel}
+                    onDelete={handleDelete}
+                  />
+                )}
+              />
             </div>
           </section>
         )}

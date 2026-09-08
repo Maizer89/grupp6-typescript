@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { GroupRoom } from "../types/GroupRoom";
 import { getRooms } from "../services/roomService";
 import RoomCard from "../components/RoomCard";
+import List from "../components/List";
 
 export default function Home() {
   // Sparar alla hämtade rum
@@ -21,9 +22,10 @@ export default function Home() {
         <p>Välj ett rum för att se information och boka en ledig tid.</p>
       </div>
       <div className="room-grid">
-        {rooms.map((room) => (
-          <RoomCard key={room.id} room={room} />
-        ))}
+        <List
+          items={rooms}
+          renderItem={(room) => <RoomCard key={room.id} room={room} />}
+        />
       </div>
     </main>
   );
