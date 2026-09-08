@@ -49,6 +49,14 @@
       "timeSlot": "13:00-14:00",
       "bookedBy": "student@kth.se",
       "status": "confirmed"
+    },
+    {
+      "roomId": "2",
+      "date": "2026-09-11",
+      "timeSlot": "11:00-12:00",
+      "bookedBy": "rasmus@live.se",
+      "status": "confirmed",
+      "id": "H_Vh4oZWIo8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
