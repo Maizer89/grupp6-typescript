@@ -1,75 +1,22 @@
-# React + TypeScript + Vite
+# Grupp 6 – Bokning av grupprum
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Det här projektet är en bokningsapplikation för grupprum på ett bibliotek.
+Applikationen är byggd med React och TypeScript och använder JSON Server för att lagra rum och bokningar.
 
-Currently, two official plugins are available:
+Användaren kan se vilka rum som finns, gå in på ett specifikt rum och boka ett datum och en tid med sin e-postadress.
+Det går även att söka efter sina bokningar, avboka och ta bort dem.
+Systemet kontrollerar också så att samma rum inte kan bokas två gånger på samma datum och tid.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Vi har använt React, TypeScript, React Router, JSON Server och vanlig CSS. Vi valde vanilla CSS eftersom projektet är relativt litet och vi inte hade något behov av ett separat CSS-ramverk.
 
-## React Compiler
+För att starta projektet kör först `npm install`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Starta sedan React-applikationen med `npm run dev`.
 
-## Expanding the ESLint configuration
+JSON Server behöver startas i en separat terminal med `npm run server`. Servern körs på `http://localhost:3000`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Gruppmedlemmar
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Hosein Moustafa  
+Rasmus Billgren  
+Amir Hemmatnia
