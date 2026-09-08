@@ -8,7 +8,7 @@ interface RoomCardProps {
 // Visar information om ett enskilt rum
 export default function RoomCard({ room }: RoomCardProps) {
   return (
-    <div>
+    <div className="room-card">
       <h2>{room.name}</h2>
       <p>Kapacitet: {room.capacity} personer</p>
 

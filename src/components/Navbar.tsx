@@ -18,17 +18,19 @@ function Breadcrumbs() {
   // Om vi är på startsidan visas enbart "Hem"
   if (path === "/") {
     return (
-      <nav aria-label="Brödsmulor" style={breadcrumbStyles.nav}>
-        <span style={breadcrumbStyles.current}>Hem</span>
+      <nav aria-label="Brödsmulor" className="breadcrumbs">
+        <span className="breadcrumb-current">Hem</span>
       </nav>
     );
   }
 
   return (
-    <nav aria-label="Brödsmulor" style={breadcrumbStyles.nav}>
-      <Link to="/" style={breadcrumbStyles.link}>Hem</Link>
-      <span style={breadcrumbStyles.separator}>/</span>
-      <span style={breadcrumbStyles.current}>{currentLabel}</span>
+    <nav aria-label="Brödsmulor" className="breadcrumbs">
+      <Link to="/" className="breadcrumb-link">
+        Hem
+      </Link>
+      <span className="breadcrumb-separator">/</span>
+      <span className="breadcrumb-current">{currentLabel}</span>
     </nav>
   );
 }
@@ -36,32 +38,30 @@ function Breadcrumbs() {
 // Minimal och tydlig Navbar för hela applikationen
 export default function Navbar() {
   return (
-    <header style={navbarStyles.header}>
-      <div style={navbarStyles.container}>
-        <div style={navbarStyles.brandContainer}>
-          <Link to="/" style={navbarStyles.brand}>
-            📚 Biblioteket <span style={navbarStyles.subBrand}>Grupprum</span>
+    <header className="navbar">
+      <div className="navbar-container">
+        <div className="navbar-brand-container">
+          <Link to="/" className="navbar-brand">
+            📚 Biblioteket <span>Grupprum</span>
           </Link>
         </div>
 
         {/* Huvudnavigering */}
-        <nav style={navbarStyles.navLinks}>
+        <nav className="navbar-links">
           <NavLink
             to="/"
             end
-            style={({ isActive }) => ({
-              ...navbarStyles.link,
-              ...(isActive ? navbarStyles.activeLink : {}),
-            })}
+            className={({ isActive }) =>
+              isActive ? "navbar-link active" : "navbar-link"
+            }
           >
             Alla Rum
           </NavLink>
           <NavLink
             to="/my-bookings"
-            style={({ isActive }) => ({
-              ...navbarStyles.link,
-              ...(isActive ? navbarStyles.activeLink : {}),
-            })}
+            className={({ isActive }) =>
+              isActive ? "navbar-link active" : "navbar-link"
+            }
           >
             Mina Bokningar
           </NavLink>
@@ -69,7 +69,7 @@ export default function Navbar() {
       </div>
 
       {/* Brödsmulor direkt under navigeringsraden */}
-      <div style={navbarStyles.breadcrumbContainer}>
+      <div className="breadcrumb-container">
         <Breadcrumbs />
       </div>
     </header>
