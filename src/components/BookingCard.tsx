@@ -9,6 +9,7 @@ export interface BookingCardProps {
   booking: Booking;
   roomName: string;
   onCancel: (bookingId: number) => void; // 👈 Typad Callback-prop enligt lärarens krav
+  onDelete: (bookingId: number) => void;
 }
 
 /**
@@ -20,6 +21,7 @@ export default function BookingCard({
   booking,
   roomName,
   onCancel,
+  onDelete,
 }: BookingCardProps) {
   const isCancelled = booking.status === "cancelled";
 
@@ -35,7 +37,13 @@ export default function BookingCard({
         boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+        }}
+      >
         <div>
           <h3 style={{ margin: "0 0 6px 0", color: "#0f1f2e" }}>{roomName}</h3>
           <p style={{ margin: "4px 0", color: "#64748b", fontSize: "0.9rem" }}>
@@ -71,8 +79,25 @@ export default function BookingCard({
       </div>
 
       {/* Avbokningsknapp som exekverar den typade callback-proppen */}
-      {!isCancelled && (
-        <div style={{ marginTop: "14px" }}>
+      <div style={{ marginTop: "14px" }}>
+        {isCancelled ? (
+          <button
+            type="button"
+            onClick={() => onDelete(booking.id)}
+            style={{
+              padding: "8px 14px",
+              backgroundColor: "#475569",
+              color: "#ffffff",
+              border: "none",
+              borderRadius: "6px",
+              fontWeight: 600,
+              fontSize: "0.9rem",
+              cursor: "pointer",
+            }}
+          >
+            Ta bort bokning
+          </button>
+        ) : (
           <button
             type="button"
             onClick={() => onCancel(booking.id)}
@@ -89,8 +114,8 @@ export default function BookingCard({
           >
             Avboka rum
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
