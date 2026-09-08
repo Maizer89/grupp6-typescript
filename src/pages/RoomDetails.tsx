@@ -28,15 +28,6 @@ export default function RoomDetails() {
 
   return (
     <>
-      <header>
-        <h2>Room Booking</h2>
-
-        <nav>
-          <Link to="/">Rum</Link>
-          <Link to="/my-bookings">Mina bokningar</Link>
-        </nav>
-      </header>
-
       <main>
         <Link to="/">← Tillbaka till rum</Link>
 
