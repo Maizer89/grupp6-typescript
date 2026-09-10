@@ -4,7 +4,7 @@ export async function get<T>(endpoint: string): Promise<T> {
   const response = await fetch(`${BASE_URL}${endpoint}`);
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch data: ${response.status}`);
+    throw new Error("Failed to fetch data");
   }
 
   return response.json() as Promise<T>;
@@ -20,7 +20,7 @@ export async function post<T, U>(endpoint: string, data: U): Promise<T> {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to create data: ${response.status}`);
+    throw new Error("Failed to create data");
   }
 
   return response.json() as Promise<T>;
@@ -36,7 +36,7 @@ export async function patch<T, U>(endpoint: string, data: U): Promise<T> {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to update data: ${response.status}`);
+    throw new Error("Failed to update data");
   }
 
   return response.json() as Promise<T>;
@@ -48,6 +48,6 @@ export async function remove(endpoint: string): Promise<void> {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to delete data: ${response.status}`);
+    throw new Error("Failed to delete data");
   }
 }
